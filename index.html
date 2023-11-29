@@ -1,58 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase Firestore Search</title>
-    <!-- Add Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-</head>
-<body>
-    <h1>Firebase Firestore Search</h1>
-    
-    <label for="documentId">Enter Document ID:</label>
-    <input type="text" id="documentId" />
-    <button onclick="searchFirestore()">Search</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AGG Holiday</title>
+    </head>
+    <body>
+        <h1>Firebase Firestore Search</h1>
 
-    <p id="result"></p>
+        <label for="documentId">Enter Document ID:</label>
+        <input type="text" id="documentId" />
+        <button onclick="searchFirestore()">Search</button>
 
-    <script>
-        // Initialize Firebase
-        const firebaseConfig = {
-            apiKey: 'AIzaSyBBZOUs_9vD6xdBTpkgiNRJ1wRQkjEHrKU',
-            authDomain: 'aggholiday-bafb9.firebaseapp.com',
-            projectId: 'aggholiday-bafb9',
-            storageBucket: 'aggholiday-bafb9.appspot.com',
-            messagingSenderId: '518104895758',
-            appId: '1:518104895758:web:c650caee27513bbaeb075f'
-        };
+        <p id="result"></p>
 
-        firebase.initializeApp(firebaseConfig);
-
-        // Reference to the Firestore database
-        const db = firebase.firestore();
-
-        function searchFirestore() {
-            // Get the document ID from the input field
-            const documentId = document.getElementById('documentId').value;
-
-            // Reference to the document
-            const docRef = db.collection('People').doc(documentId);
-
-            docRef.get().then((doc) => {
-                if (doc.exists) {
-                    // Document found, display presentCount
-                    const presentCount = doc.data().presentCount;
-                    document.getElementById('result').innerText = `Present Count: ${presentCount}`;
-                } else {
-                    // Document not found
-                    document.getElementById('result').innerText = 'Could not find a document with that ID.';
-                }
-            }).catch((error) => {
-                console.error('Error getting document:', error);
-            });
-        }
-    </script>
-</body>
+        <!-- Add Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+        <script src="main.js"></script>
+    </body>
 </html>
