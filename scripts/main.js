@@ -16,6 +16,7 @@ const db = firebase.firestore();
 function checkCode() {
     // Get the document ID from the input field
     const documentId = document.getElementById('code-input').value;
+    console.log(documentId);
 
     // Reference to the document
     const docRef = db.collection('People').doc(documentId);
