@@ -13,9 +13,9 @@ firebase.initializeApp(firebaseConfig);
 // Reference to the Firestore database
 const db = firebase.firestore();
 
-function searchFirestore() {
+function checkCode() {
     // Get the document ID from the input field
-    const documentId = document.getElementById('documentId').value;
+    const documentId = document.getElementById('code-input').value;
 
     // Reference to the document
     const docRef = db.collection('People').doc(documentId);
@@ -24,12 +24,12 @@ function searchFirestore() {
         if (doc.exists) {
             // Document found, display presentCount
             const presentCount = doc.data().presentCount;
-            document.getElementById('result').innerText = `Present Count: ${presentCount}`;
+            alert(`Present Count: ${presentCount}`);
         } else {
             // Document not found
-            document.getElementById('result').innerText = 'Could not find a document with that ID.';
+            alert("Invalid Code");
         }
     }).catch((error) => {
-        console.error('Error getting document:', error);
+        console.error('Error:', error);
     });
 }

@@ -1,0 +1,62 @@
+body {
+    background-color: #61dafb; /* Light Blue */
+    background-image: url('images/background.jpg'); /* Replace with your Christmas-themed background image URL */
+    background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Align items with space in between */
+    min-height: 100vh; /* Ensure the page takes at least the full viewport height */
+    color: #fff; /* White text color */
+}
+
+#main-container {
+    text-align: center;
+    margin: auto; /* Center the main container vertically */
+}
+
+#input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#code-input {
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 5px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000;
+}
+
+#unlock-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #2ecc71;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#unlock-button:hover {
+    background-color: #27ae60;
+}
+
+#countdown-container {
+    text-align: center;
+    padding: 20px;
+}
+
+#countdown {
+    font-size: 24px;
+    color: #fff;
+}
