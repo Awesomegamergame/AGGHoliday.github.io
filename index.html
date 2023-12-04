@@ -10,11 +10,20 @@
 
 <body>
 
-    <div id="main-container">
+    <div id="main-container" class="container">
         <h1>AGG Holiday</h1>
         <div id="input-container">
             <input id="code-input" placeholder="Enter Secret Code">
             <button id="unlock-button" onclick="checkCode()">Unlock</button>
+        </div>
+    </div>
+
+    <div id="presents-container" class="container" style="display: none;">
+        <h1>Presents Page</h1>
+        <div id="presents-list" style="background: gray; margin-bottom: 10px;"></div>
+        <div id="present-navigation">
+            <button onclick="showPreviousPresent()">Back</button>
+            <button onclick="showNextPresent()">Next</button>
         </div>
     </div>
 

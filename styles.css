@@ -15,9 +15,13 @@ body {
     color: #fff; /* White text color */
 }
 
-#main-container {
+.container {
     text-align: center;
-    margin: auto; /* Center the main container vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
 }
 
 #input-container {
@@ -37,7 +41,7 @@ body {
     color: #000;
 }
 
-#unlock-button {
+button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #2ecc71;
@@ -53,10 +57,18 @@ body {
 
 #countdown-container {
     text-align: center;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -100%);
     padding: 20px;
 }
 
 #countdown {
     font-size: 24px;
     color: #fff;
+}
+
+.christmas-gift {
+    transition: opacity 0.5s ease;
 }
