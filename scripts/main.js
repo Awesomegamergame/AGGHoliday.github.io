@@ -36,10 +36,10 @@ function checkCode() {
 
             for (let i = 1; i <= presentCount; i++) {
 
-                const presentData = doc.data()[`present${i-1}`];
+                const presentData = doc.data()[`present${i - 1}`];
 
                 if (presentData && Array.isArray(presentData)) {
-                    console.log(`Present ${i-1} Array:`, presentData);
+                    console.log(`Present ${i - 1} Array:`, presentData);
                 }
 
                 // Create a new present element
@@ -51,17 +51,24 @@ function checkCode() {
                 presentImage.src = "images/present.png";
                 presentImage.alt = `Present ${i}`;
                 presentImage.height = 200;
+                presentImage.className = 'christmas-gift-image';
+
+                // Attach a click event listener to each present image
+                presentImage.addEventListener('click', function () {
+                    openPresent(presentElement);
+                });
+
+                presentImage.setAttribute('data-url', presentData[1]);
+
+                const presentIframe = document.createElement('iframe');
+                presentIframe.style.display = 'none';
+                presentIframe.height = 200;
+                presentIframe.width = 200;
+                presentIframe.src = "";
 
                 // Append the image element to the present element
                 presentElement.appendChild(presentImage);
-
-                // Attach a click event listener to each present element
-                presentElement.addEventListener('click', () => {
-                    // Handle the click event to make the present image fade away
-                    presentElement.style.opacity = '0';
-                    setTimeout(() => {
-                    }, 500); // Adjust the duration of the fade-out animation (in milliseconds)
-                });
+                presentElement.appendChild(presentIframe);
 
                 // Append the present element to the presents list
                 presentsList.appendChild(presentElement);
@@ -94,4 +101,31 @@ function showPreviousPresent() {
 function showNextPresent() {
     currentPresentIndex = (currentPresentIndex + 1) % presentCount;
     showPresent(currentPresentIndex);
+}
+
+function openPresent(presentElement) {
+    var imageElement = presentElement.querySelector('img');
+    var iframeElement = presentElement.querySelector('iframe');
+
+    var fileUrl = imageElement.getAttribute('data-url');
+
+    // Create a reference to the file in Firebase Storage
+    var storageRef = firebase.storage().ref();
+
+    storageRef.child(fileUrl).getDownloadURL().then(function (url) {
+        iframeElement.src = url;
+
+            // Handle the click event to make the present image fade away
+    imageElement.style.opacity = '0';
+    setTimeout(() => {
+        iframeElement.style.display = 'block';
+        imageElement.style.display = 'none';
+    }, 400); // Adjust the duration of the fade-out animation (in milliseconds)
+    })
+    .catch(function() {
+        console.error('Error either isnt christmas or something broke');
+        return;
+        // Handle the error as needed
+    });
+
 }
