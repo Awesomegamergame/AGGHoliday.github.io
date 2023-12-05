@@ -115,17 +115,17 @@ function openPresent(presentElement) {
     storageRef.child(fileUrl).getDownloadURL().then(function (url) {
         iframeElement.src = url;
 
-            // Handle the click event to make the present image fade away
-    imageElement.style.opacity = '0';
-    setTimeout(() => {
-        iframeElement.style.display = 'block';
-        imageElement.style.display = 'none';
-    }, 400); // Adjust the duration of the fade-out animation (in milliseconds)
+        // Handle the click event to make the present image fade away
+        imageElement.style.opacity = '0';
+        setTimeout(() => {
+            iframeElement.style.display = 'block';
+            imageElement.style.display = 'none';
+        }, 400); // Adjust the duration of the fade-out animation (in milliseconds)
     })
-    .catch(function() {
-        console.error('Error either isnt christmas or something broke');
-        return;
-        // Handle the error as needed
-    });
+        .catch(function () {
+            console.error('Error either isnt christmas or something broke');
+            return;
+            // Handle the error as needed
+        });
 
 }
