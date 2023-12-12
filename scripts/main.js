@@ -62,8 +62,8 @@ function checkCode() {
 
                 const presentIframe = document.createElement('iframe');
                 presentIframe.style.display = 'none';
-                presentIframe.height = 200;
-                presentIframe.width = 200;
+                presentIframe.height = 500;
+                presentIframe.width = 500;
                 presentIframe.src = "";
 
                 // Append the image element to the present element
