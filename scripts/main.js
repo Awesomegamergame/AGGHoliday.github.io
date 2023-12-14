@@ -26,6 +26,9 @@ function checkCode() {
             presentCount = doc.data().presentCount;
             alert(`Present Count: ${presentCount}`);
 
+            if(presentCount == 1)
+                document.getElementById('present-navigation').style.display = 'none';
+
             // Show the presents container when unlocking is successful
             document.getElementById('presents-container').style.display = 'block';
             document.getElementById('main-container').style.display = 'none';
@@ -40,6 +43,10 @@ function checkCode() {
 
                 if (presentData && Array.isArray(presentData)) {
                     console.log(`Present ${i - 1} Array:`, presentData);
+
+
+                    //TODO: Do a check to see if the present is already open
+
                 }
 
                 // Create a new present element
@@ -121,6 +128,13 @@ function openPresent(presentElement) {
             iframeElement.style.display = 'block';
             imageElement.style.display = 'none';
         }, 400); // Adjust the duration of the fade-out animation (in milliseconds)
+
+
+
+        //TODO: Add in the opened present event
+
+
+
     })
         .catch(function () {
             console.error('Error either isnt christmas or something broke');

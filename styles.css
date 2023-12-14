@@ -66,3 +66,11 @@ button {
 .christmas-gift-image {
     transition: opacity 0.5s ease;
 }
+
+@media screen and (max-width: 600px) {
+    .christmas-gift iframe {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
