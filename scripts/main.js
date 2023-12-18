@@ -15,6 +15,8 @@ const db = firebase.firestore();
 
 let presentCount;
 
+const presentHeader = document.getElementById('present-header');
+
 function checkCode() {
     const documentId = document.getElementById('code-input').value;
     console.log(documentId);
@@ -24,7 +26,6 @@ function checkCode() {
     docRef.get().then((doc) => {
         if (doc.exists) {
             presentCount = doc.data().presentCount;
-            alert(`Present Count: ${presentCount}`);
 
             if(presentCount == 1)
                 document.getElementById('present-navigation').style.display = 'none';
@@ -94,6 +95,7 @@ function checkCode() {
 let currentPresentIndex = 0;
 
 function showPresent(index) {
+    presentHeader.innerHTML = 'Present ' + (index + 1);
     const presents = document.querySelectorAll('.christmas-gift');
     presents.forEach((present, i) => {
         present.style.display = i === index ? 'block' : 'none';
