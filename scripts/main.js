@@ -27,7 +27,7 @@ function checkCode() {
         if (doc.exists) {
             presentCount = doc.data().presentCount;
 
-            if(presentCount == 1)
+            if (presentCount == 1)
                 document.getElementById('present-navigation').style.display = 'none';
 
             // Show the presents container when unlocking is successful
@@ -44,9 +44,6 @@ function checkCode() {
 
                 if (presentData && Array.isArray(presentData)) {
                     console.log(`Present ${i - 1} Array:`, presentData);
-
-
-                    //TODO: Do a check to see if the present is already open
 
                 }
 
@@ -80,6 +77,27 @@ function checkCode() {
 
                 // Append the present element to the presents list
                 presentsList.appendChild(presentElement);
+
+                if (presentData[0] == true) {
+
+                    // Create a reference to the file in Firebase Storage
+                    var storageRef = firebase.storage().ref();
+
+                    storageRef.child(presentData[1]).getDownloadURL().then(function (url) {
+                        presentIframe.src = url;
+
+                        presentImage.style.opacity = '0';
+                        setTimeout(() => {
+                            presentIframe.style.display = 'block';
+                            presentImage.style.display = 'none';
+                        }, 0); // Adjust the duration of the fade-out animation (in milliseconds)
+                    })
+                    .catch(function () {
+                        console.error('Error either isnt christmas or something broke');
+                        return;
+                        // Handle the error as needed
+                    });
+                }
             }
 
             // Initially show the first present
