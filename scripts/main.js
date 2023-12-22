@@ -92,11 +92,11 @@ function checkCode() {
                             presentImage.style.display = 'none';
                         }, 0); // Adjust the duration of the fade-out animation (in milliseconds)
                     })
-                    .catch(function () {
-                        console.error('Error either isnt christmas or something broke');
-                        return;
-                        // Handle the error as needed
-                    });
+                        .catch(function () {
+                            console.error('Error either isnt christmas or something broke');
+                            return;
+                            // Handle the error as needed
+                        });
                 }
             }
 
@@ -149,17 +149,26 @@ function openPresent(presentElement) {
             imageElement.style.display = 'none';
         }, 400); // Adjust the duration of the fade-out animation (in milliseconds)
 
+        // Get the document ID from the input
+        const documentId = document.getElementById('code-input').value;
 
+        // Update the present array in Firestore
+        const presentIndex = currentPresentIndex; // Index of the present being opened
+        const presentPath = `present${presentIndex}`;
 
-        //TODO: Add in the opened present event
-
-
-
+        db.collection('People').doc(documentId).update({
+            [presentPath]: [true, fileUrl] // Set the array at the specified index
+        })
+            .then(() => {
+                console.log('Present array updated successfully');
+            })
+            .catch((error) => {
+                console.error('Error updating present array:', error);
+            });
     })
         .catch(function () {
             console.error('Error either isnt christmas or something broke');
             return;
             // Handle the error as needed
         });
-
 }
