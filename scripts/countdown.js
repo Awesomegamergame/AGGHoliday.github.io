@@ -1,5 +1,5 @@
 // Set the date and time for the countdown
-const countdownDate = new Date('December 25, 2023 10:00:00 GMT-0500').getTime();
+const countdownDate = new Date('December 25, 2024 10:00:00 GMT-0500').getTime();
 
 // Update the countdown every 1 second
 const countdownInterval = setInterval(function() {
